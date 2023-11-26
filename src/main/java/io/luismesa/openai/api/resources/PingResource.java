@@ -31,7 +31,7 @@ import jakarta.ws.rs.core.Response;
  *
  * @author Luis Daniel Mesa Velásquez {@literal <admin@luismesa.io>}
  */
-@Path("jakartaee10")
+@Path("ping")
 public class PingResource {
 
     @GET
