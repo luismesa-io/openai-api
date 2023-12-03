@@ -1,0 +1,69 @@
+/*
+    Created on : Nov 10, 2023, 7:32:59 PM
+    Author     : Luis Daniel Mesa Velásquez <admin@luismesa.io>
+*/
+* {
+    margin: 0px;
+    padding: 0px;
+    border-radius: 3px;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 2367px;
+    min-width: 252px;
+    box-sizing: border-box;
+    background-color: dimgray;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Demo Specific Styles */
+
+main {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    grid-gap: 0.25em;
+    height: 99.5vh;
+    margin: 0.25vh;
+}
+
+header, footer {
+    grid-column: 1 / 4;
+}
+
+header,
+aside,
+footer {
+    background: oldlace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    color: darkgreen;
+}
+
+article {
+    background: paleturquoise;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
+@media all and (max-width: 700px) {
+    aside,
+    article {
+        grid-column: 1 / 4;
+    }
+
+    main {
+        height: auto;
+    }
+}
