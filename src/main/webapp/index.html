@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
+
     <head>
+        <!--<link rel="preload" href="https://unpkg.com/lit-html" as="script" integrity="sha512-jiluv/rI4jOyDKCAIXYzSVmz8SKdiicIWy223Z5GpwQdwVtxzbecTkqe9AghRAxUEarNyhI4C7mWJwzNQiFj1A==" crossorigin="anonymous">-->
+        <!--<link rel="preload" href="https://unpkg.com/lit-html@3.0.2/lit-html.js" as="script" integrity="sha512-jiluv/rI4jOyDKCAIXYzSVmz8SKdiicIWy223Z5GpwQdwVtxzbecTkqe9AghRAxUEarNyhI4C7mWJwzNQiFj1A==" crossorigin="anonymous">-->
+        <!--<link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat" as="style" integrity="sha512-jiluv/rI4jOyDKCAIXYzSVmz8SKdiicIWy223Z5GpwQdwVtxzbecTkqe9AghRAxUEarNyhI4C7mWJwzNQiFj1A==" crossorigin="anonymous">-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
         <link rel="stylesheet" href="openai-api.css">
-        <title>Start Page</title>
+        <title>Using OpenAI Image API</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
+
     <body>
         <main>
             <header>
@@ -16,19 +21,23 @@
             <aside>
                 <nav>
                     <ol>
-                        <li>Left Aside</li>
+                        <li>.</li>
                     </ol>
                 </nav>
             </aside>
-            <article>Main content</article>
+            <article>
+                <image-generation prompt="A cute Chihuahua puppy chasing butterflies running down a meadow on a sunny day, there are blurry trees in the background and flowers pepper the landscape."></image-generation>
+            </article>
             <aside>
                 <nav>
                     <ol>
-                        <li>Right Aside</li>
+                        <li>.</li>
                     </ol>
                 </nav>
             </aside>
             <footer><h5>Duke Rocks!</h5></footer>
         </main>
+        <script src="app.js" type="module"></script>
     </body>
+
 </html>
