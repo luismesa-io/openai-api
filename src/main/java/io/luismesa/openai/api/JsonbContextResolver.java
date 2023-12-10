@@ -23,25 +23,26 @@
  */
 package io.luismesa.openai.api;
 
-import jakarta.ws.rs.ApplicationPath;
-import jakarta.ws.rs.core.Application;
-import java.util.HashMap;
-import java.util.Map;
-import org.glassfish.jersey.CommonProperties;
-import org.glassfish.jersey.internal.InternalProperties;
+import jakarta.annotation.Priority;
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbConfig;
+import jakarta.ws.rs.ext.ContextResolver;
+import jakarta.ws.rs.ext.Provider;
 
 /**
  *
- * @author Luis Daniel Mesa Velásquez {@literal <admin@luismesa.io>}
+ * @author luism
  */
-@ApplicationPath("resources")
-public class RestServiceConfiguration extends Application {
+@Provider
+@Priority(2)
+public class JsonbContextResolver implements ContextResolver<Jsonb> {
 
     @Override
-    public Map<String, Object> getProperties() {
-        Map<String, Object> props = new HashMap<>();
-        props.put(CommonProperties.MOXY_JSON_FEATURE_DISABLE, true);
-        props.put(InternalProperties.JSON_FEATURE, "JacksonFeature");
-        return props;
+    public Jsonb getContext(Class<?> type) {
+        System.out.println("JsonbContextResolver::getContext");
+        System.out.println("type = " + type);
+        JsonbConfig config = new JsonbConfig();
+        return JsonbBuilder.create(config);
     }
 }

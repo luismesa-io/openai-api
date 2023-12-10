@@ -21,27 +21,48 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package io.luismesa.openai.api;
+package io.luismesa.openai.api.resources.images.entity;
 
-import jakarta.ws.rs.ApplicationPath;
-import jakarta.ws.rs.core.Application;
-import java.util.HashMap;
-import java.util.Map;
-import org.glassfish.jersey.CommonProperties;
-import org.glassfish.jersey.internal.InternalProperties;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  *
  * @author Luis Daniel Mesa Velásquez {@literal <admin@luismesa.io>}
  */
-@ApplicationPath("resources")
-public class RestServiceConfiguration extends Application {
+public class Image {
 
-    @Override
-    public Map<String, Object> getProperties() {
-        Map<String, Object> props = new HashMap<>();
-        props.put(CommonProperties.MOXY_JSON_FEATURE_DISABLE, true);
-        props.put(InternalProperties.JSON_FEATURE, "JacksonFeature");
-        return props;
+    private String b64Json;
+    private String url;
+    private String revisedPrompt;
+
+    @JsonGetter("b64_json")
+    public String getB64Json() {
+        return b64Json;
+    }
+
+    @JsonSetter("b64_json")
+    public void setB64Json(String b64Json) {
+        this.b64Json = b64Json;
+    }
+
+    @JsonGetter("url")
+    public String getUrl() {
+        return url;
+    }
+
+    @JsonSetter("url")
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @JsonGetter("revised_prompt")
+    public String getRevisedPrompt() {
+        return revisedPrompt;
+    }
+
+    @JsonSetter("revised_prompt")
+    public void setRevisedPrompt(String revisedPrompt) {
+        this.revisedPrompt = revisedPrompt;
     }
 }

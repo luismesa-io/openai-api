@@ -21,27 +21,37 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package io.luismesa.openai.api;
+package io.luismesa.openai.api.resources.format.boundary;
 
-import jakarta.ws.rs.ApplicationPath;
-import jakarta.ws.rs.core.Application;
+import io.luismesa.openai.api.resources.images.entity.ResponseFormat;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import org.glassfish.jersey.CommonProperties;
-import org.glassfish.jersey.internal.InternalProperties;
+import java.util.stream.Collectors;
 
 /**
  *
  * @author Luis Daniel Mesa Velásquez {@literal <admin@luismesa.io>}
  */
-@ApplicationPath("resources")
-public class RestServiceConfiguration extends Application {
+@Path("v1/response-formats")
+public class ResponseFormatResource {
 
-    @Override
-    public Map<String, Object> getProperties() {
-        Map<String, Object> props = new HashMap<>();
-        props.put(CommonProperties.MOXY_JSON_FEATURE_DISABLE, true);
-        props.put(InternalProperties.JSON_FEATURE, "JacksonFeature");
-        return props;
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<Map<String, String>> getResponseFormats() {
+        return EnumSet.allOf(ResponseFormat.class)
+                .stream()
+                .map(d -> {
+                    HashMap<String, String> obj = new HashMap<>();
+                    obj.put("key", d.name());
+                    obj.put("value", d.toString());
+                    return obj;
+                })
+                .collect(Collectors.toList());
     }
 }

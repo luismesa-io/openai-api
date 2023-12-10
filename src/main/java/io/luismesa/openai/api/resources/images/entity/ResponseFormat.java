@@ -21,23 +21,37 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package io.luismesa.openai.api.resources;
+package io.luismesa.openai.api.resources.images.entity;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.core.Response;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  *
  * @author Luis Daniel Mesa Velásquez {@literal <admin@luismesa.io>}
  */
-@Path("ping")
-public class PingResource {
+public enum ResponseFormat {
 
-    @GET
-    public Response ping() {
-        return Response
-                .ok("ping Jakarta EE")
-                .build();
+    @JsonProperty("url")
+    URL("url"),
+    @JsonProperty("b64_json")
+    B64_JSON("b64_json");
+
+    private final String key;
+
+    ResponseFormat(String key) {
+        this.key = key;
+    }
+
+    @JsonValue
+    @Override
+    public String toString() {
+        return this.key;
+    }
+
+    @JsonCreator
+    public static ResponseFormat fromString(String key) {
+        return valueOf(key.toUpperCase());
     }
 }

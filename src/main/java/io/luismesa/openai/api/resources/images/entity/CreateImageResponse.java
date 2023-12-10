@@ -21,27 +21,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package io.luismesa.openai.api;
+package io.luismesa.openai.api.resources.images.entity;
 
-import jakarta.ws.rs.ApplicationPath;
-import jakarta.ws.rs.core.Application;
-import java.util.HashMap;
-import java.util.Map;
-import org.glassfish.jersey.CommonProperties;
-import org.glassfish.jersey.internal.InternalProperties;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import java.util.List;
 
 /**
  *
  * @author Luis Daniel Mesa Velásquez {@literal <admin@luismesa.io>}
  */
-@ApplicationPath("resources")
-public class RestServiceConfiguration extends Application {
+public class CreateImageResponse extends RequestError {
 
-    @Override
-    public Map<String, Object> getProperties() {
-        Map<String, Object> props = new HashMap<>();
-        props.put(CommonProperties.MOXY_JSON_FEATURE_DISABLE, true);
-        props.put(InternalProperties.JSON_FEATURE, "JacksonFeature");
-        return props;
+    private long created;
+    private List<Image> data;
+
+    @JsonGetter("created")
+    public long getCreated() {
+        return created;
     }
+
+    @JsonSetter("created")
+    public void setCreated(long created) {
+        this.created = created;
+    }
+
+    @JsonGetter("data")
+    public List<Image> getData() {
+        return data;
+    }
+
+    @JsonSetter("data")
+    public void setData(List<Image> data) {
+        this.data = data;
+    }
+
 }
